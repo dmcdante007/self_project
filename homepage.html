@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <title>'Creating a form'</title>
+</head>
+
+<body>
+    <form onsubmit="saveToLocalStorage(event)">
+        <label class="Username" id="Name">Enter your Username</label>
+        <input type="email" name="Username" id="Name">
+
+        <label class="age" id="age">Enter your age</label>
+        <input type="number" name="age" id="age">
+
+        <label>PhoneNumber</label>
+        <input type="number" name="PhoneNumber">
+        <button type="submit">SUBMIT</button>
+    </form>
+    <script>
+        function saveToLocalStorage(event) {
+            event.preventDefault();
+            const name = event.target.Username.value
+            const age = event.target.age.value
+            const number = event.target.PhoneNumber.value
+
+            localStorage.setItem('name', name)
+            localStorage.setItem('age', age)
+            localStorage.setItem('Phone', number)
+        }
+    </script>
+</body>
