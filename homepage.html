@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 
+<!DOCTYPE html>
+
 <head>
     <title>'Creating a form'</title>
 </head>
@@ -19,13 +21,18 @@
     <script>
         function saveToLocalStorage(event) {
             event.preventDefault();
-            const name = event.target.Username.value
-            const age = event.target.age.value
-            const number = event.target.PhoneNumber.value
+            let obj1 = {
+                'name': event.target.Username.value,
+                'age': event.target.age.value,
+                'number': event.target.PhoneNumber.value
+            };
 
-            localStorage.setItem('name', name)
-            localStorage.setItem('age', age)
-            localStorage.setItem('Phone', number)
+            let obj1_serialized = JSON.stringify(obj1);
+            <!-- console.log(obj1_serialized) -->
+            localStorage.setItem('myobj', obj1_serialized)
+            //To Deserialize
+            let obj1_deseialized = JSON.parse(localStorage.getItem('myobj'))
+            console.log(obj1_deseialized)
         }
     </script>
 </body>
