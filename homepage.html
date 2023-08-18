@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<!DOCTYPE html>
-
 <head>
     <title>'Creating a form'</title>
 </head>
@@ -18,6 +16,10 @@
         <input type="number" name="PhoneNumber">
         <button type="submit">SUBMIT</button>
     </form>
+    <ul>
+        <li></li>
+    </ul>
+
     <script>
         function saveToLocalStorage(event) {
             event.preventDefault();
@@ -33,6 +35,18 @@
             //To Deserialize
             let obj1_deseialized = JSON.parse(localStorage.getItem('myobj'))
             console.log(obj1_deseialized)
+
+
+            var con = document.querySelector('ul');
+            var h2 = document.querySelector('li');
+            let li = document.createElement('li')
+            li.className = "list_ele"
+            li.appendChild(document.createTextNode(obj1_serialized))
+
+            con.insertBefore(li, con)
+
+
+
         }
     </script>
 </body>
