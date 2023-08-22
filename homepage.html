@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <head>
@@ -34,16 +35,29 @@
             localStorage.setItem('myobj', obj1_serialized)
             //To Deserialize
             let obj1_deseialized = JSON.parse(localStorage.getItem('myobj'))
+
             console.log(obj1_deseialized)
 
 
-            var con = document.querySelector('ul');
-            var h2 = document.querySelector('li');
+            const con = document.querySelector('ul');
+            let h2 = document.querySelector('li');
             let li = document.createElement('li')
             li.className = "list_ele"
-            li.appendChild(document.createTextNode(obj1_serialized))
+            li.appendChild(document.createTextNode(obj1_deseialized))
 
-            con.insertBefore(li, con)
+            con.insertBefore(li, h2)
+
+            const del = document.createElement('input');
+            del.type = 'button';
+            del.value = 'delete';
+            del.onclick = () => {
+                localStorage.removeItem(obj1.name);
+                con.removeChild(li);
+            }
+            li.appendChild(del);
+
+
+
 
 
 
