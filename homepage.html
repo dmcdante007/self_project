@@ -1,66 +1,14 @@
+ const edit = document.createElement('input')
+            edit.type = 'button'
+            edit.value = 'edit'
+            edit.onclick = () => {
+                event.target.Username.value = obj1.name;
+                event.target.age.value = obj1.age;
+                event.target.PhoneNumber.value = obj1.number;
 
-<!DOCTYPE html>
-
-<head>
-    <title>'Creating a form'</title>
-</head>
-
-<body>
-    <form onsubmit="saveToLocalStorage(event)">
-        <label class="Username" id="Name">Enter your Username</label>
-        <input type="email" name="Username" id="Name">
-
-        <label class="age" id="age">Enter your age</label>
-        <input type="number" name="age" id="age">
-
-        <label>PhoneNumber</label>
-        <input type="number" name="PhoneNumber">
-        <button type="submit">SUBMIT</button>
-    </form>
-    <ul>
-        <li></li>
-    </ul>
-
-    <script>
-        function saveToLocalStorage(event) {
-            event.preventDefault();
-            let obj1 = {
-                'name': event.target.Username.value,
-                'age': event.target.age.value,
-                'number': event.target.PhoneNumber.value
-            };
-
-            let obj1_serialized = JSON.stringify(obj1);
-            <!-- console.log(obj1_serialized) -->
-            localStorage.setItem('myobj', obj1_serialized)
-            //To Deserialize
-            let obj1_deseialized = JSON.parse(localStorage.getItem('myobj'))
-
-            console.log(obj1_deseialized)
-
-
-            const con = document.querySelector('ul');
-            let h2 = document.querySelector('li');
-            let li = document.createElement('li')
-            li.className = "list_ele"
-            li.appendChild(document.createTextNode(obj1_deseialized))
-
-            con.insertBefore(li, h2)
-
-            const del = document.createElement('input');
-            del.type = 'button';
-            del.value = 'delete';
-            del.onclick = () => {
                 localStorage.removeItem(obj1.name);
                 con.removeChild(li);
+
             }
-            li.appendChild(del);
+            li.append(edit);
 
-
-
-
-
-
-        }
-    </script>
-</body>
