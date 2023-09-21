@@ -1,66 +1,47 @@
-
 <!DOCTYPE html>
 
 <head>
-    <title>'Creating a form'</title>
+    <title>Expense tracker app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="homepage.css">
 </head>
 
 <body>
-    <form onsubmit="saveToLocalStorage(event)">
-        <label class="Username" id="Name">Enter your Username</label>
-        <input type="email" name="Username" id="Name">
+    <div id="main" class="card card-body">
+        <form onsubmit="saveToLocalStorage(event)">
+            <label for="ExpenseAmount" class="form-label">Choose Expense Amount: </label>
+            <input type="text" id="Expense" name="Expenses" class="form-control-sm "><br>
+            <label for="Discription" class="form-label">Choose Discription: </label>
+            <input type="text" id="Discrption" name="Discrptions" class="form-control-sm"><br>
+            <label for="Category" class="form-label">Choose Category: </label>
+            <select class="form-select-sm" id="cato" name="catos">
+                <option>Movie</option>
+                <option>Fuel</option>
+                <option>Food</option>
+                <option>Rent</option>
+                <option>Grossery</option>
+                <option>Others</option>
+            </select><br>
+            <button type="submit" class="btn btn-outline-primary btn-sm" id="button">Add Expense</button><br>
+            <br>
 
-        <label class="age" id="age">Enter your age</label>
-        <input type="number" name="age" id="age">
-
-        <label>PhoneNumber</label>
-        <input type="number" name="PhoneNumber">
-        <button type="submit">SUBMIT</button>
-    </form>
-    <ul>
-        <li></li>
-    </ul>
-
-    <script>
-        function saveToLocalStorage(event) {
-            event.preventDefault();
-            let obj1 = {
-                'name': event.target.Username.value,
-                'age': event.target.age.value,
-                'number': event.target.PhoneNumber.value
-            };
-
-            let obj1_serialized = JSON.stringify(obj1);
-            <!-- console.log(obj1_serialized) -->
-            localStorage.setItem('myobj', obj1_serialized)
-            //To Deserialize
-            let obj1_deseialized = JSON.parse(localStorage.getItem('myobj'))
-
-            console.log(obj1_deseialized)
+            <h3>Expense List:</h3>
+            <ul id="items" class="list-group">
+                <!-- <li class="list-group-item"></li> -->
+            </ul>
+        </form>
 
 
-            const con = document.querySelector('ul');
-            let h2 = document.querySelector('li');
-            let li = document.createElement('li')
-            li.className = "list_ele"
-            li.appendChild(document.createTextNode(obj1_deseialized))
+        <script src="./homepage.js">
 
-            con.insertBefore(li, h2)
+        </script>
 
-            const del = document.createElement('input');
-            del.type = 'button';
-            del.value = 'delete';
-            del.onclick = () => {
-                localStorage.removeItem(obj1.name);
-                con.removeChild(li);
-            }
-            li.appendChild(del);
+    </div>
 
 
 
-
-
-
-        }
-    </script>
 </body>
